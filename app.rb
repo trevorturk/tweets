@@ -8,7 +8,7 @@ require 'sequel'
 
 get '/' do
   @users = User.all
-  @tweets = Tweet.all
+  @tweets = Tweet.all # TODO should only show tweets from people current_user (TODO) is following (TODO)
   erb :home
 end
 
@@ -43,18 +43,15 @@ end
 configure do
   
   # USERS
-  
   User.create(:login => 'geoff')
   User.create(:login => 'scott')
   User.create(:login => 'trevor')
   User.create(:login => 'zach')
   
   # TWEETS
-  
   Tweet.create(:user => 'geoff', :body => "i'm hungry")
   Tweet.create(:user => 'scott', :body => "it's too cold in the office")
   Tweet.create(:user => 'trevor', :body => "let's talk about poop")
   Tweet.create(:user => 'zach', :body => "couchdb is the coolest!")
-  
   
 end
