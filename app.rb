@@ -8,10 +8,12 @@ require 'sequel'
 
 get '/' do
   @users = User.all
+  @tweets = Tweet.all
   erb :home
 end
 
 get '/:user' do
+  @tweets = Tweet.filter(:user => params[:user])
   erb :user
 end
 
@@ -24,14 +26,35 @@ DB.create_table :users do
   String :login
 end
 
+DB.create_table :tweets do
+  primary_key :id
+  String :user
+  String :body
+end
+
 class User < Sequel::Model
+end
+
+class Tweet < Sequel::Model
 end
 
 # BOOTSTRAP
 
 configure do
-  User.insert(:login => 'geoff')
-  User.insert(:login => 'scott')
-  User.insert(:login => 'trevor')
-  User.insert(:login => 'zach')
+  
+  # USERS
+  
+  User.create(:login => 'geoff')
+  User.create(:login => 'scott')
+  User.create(:login => 'trevor')
+  User.create(:login => 'zach')
+  
+  # TWEETS
+  
+  Tweet.create(:user => 'geoff', :body => "i'm hungry")
+  Tweet.create(:user => 'scott', :body => "it's too cold in the office")
+  Tweet.create(:user => 'trevor', :body => "let's talk about poop")
+  Tweet.create(:user => 'zach', :body => "couchdb is the coolest!")
+  
+  
 end

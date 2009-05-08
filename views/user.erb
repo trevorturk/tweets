@@ -1,3 +1,7 @@
 <h2><%= params[:user] %></h2>
 
-<p>...</p>
+<ul>
+  <% @tweets.each do |tweet| %>
+    <li><%= tweet.body %></li>
+  <% end %>
+</ul>
