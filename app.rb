@@ -4,9 +4,7 @@ require 'rubygems'
 require 'sinatra'
 require 'sequel'
 
-#
 # DATABASE
-#
 
 DB = Sequel.sqlite
 
@@ -15,17 +13,24 @@ DB.create_table :users do
   String :login
 end
 
-DB[:users].insert(:login => 'geoff')
-DB[:users].insert(:login => 'scott')
-DB[:users].insert(:login => 'trevor')
-DB[:users].insert(:login => 'zach')
+# MODELS
 
-#
+class User < Sequel::Model
+end
+
+# BOOTSTRAP
+
+configure do
+  User.insert(:login => 'geoff')
+  User.insert(:login => 'scott')
+  User.insert(:login => 'trevor')
+  User.insert(:login => 'zach')
+end
+
 # ACTIONS
-#
 
 get '/' do
-  @users = DB[:users].all
+  @users = User.all
   erb :home
 end
 
