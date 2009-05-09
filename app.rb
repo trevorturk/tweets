@@ -4,8 +4,6 @@ require 'rubygems'
 require 'sinatra'
 require 'sequel'
 
-# ACTIONS
-
 get '/' do
   @users = User.all
   @tweets = Tweet.all # TODO should only show tweets from people current_user (TODO) is following (TODO)
@@ -17,38 +15,32 @@ get '/:user' do
   erb :user
 end
 
-# DATABASE
-
-DB = Sequel.sqlite
-
-DB.create_table :users do
-  primary_key :id
-  String :login
-end
-
-DB.create_table :tweets do
-  primary_key :id
-  String :user
-  String :body
-end
-
-class User < Sequel::Model
-end
-
-class Tweet < Sequel::Model
-end
-
-# BOOTSTRAP
-
 configure do
   
-  # USERS
+  DB = Sequel.sqlite
+
+  DB.create_table :users do
+    primary_key :id
+    String :login
+  end
+
+  class User < Sequel::Model
+  end
+
+  DB.create_table :tweets do
+    primary_key :id
+    String :user
+    String :body
+  end
+  
+  class Tweet < Sequel::Model
+  end
+  
   User.create(:login => 'geoff')
   User.create(:login => 'scott')
   User.create(:login => 'trevor')
   User.create(:login => 'zach')
   
-  # TWEETS
   Tweet.create(:user => 'geoff', :body => "i'm hungry")
   Tweet.create(:user => 'scott', :body => "it's too cold in the office")
   Tweet.create(:user => 'trevor', :body => "let's talk about poop")
