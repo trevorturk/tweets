@@ -16,4 +16,6 @@ Rails::Initializer.run do |config|
   config.gem 'populator'
   config.gem 'notahat-machinist', :lib => 'machinist', :source => 'http://gems.github.com'
   
+  config.after_initialize { Cambric.load_config("config/couchdb.yml")  }
+  
 end

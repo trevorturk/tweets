@@ -1,0 +1,13 @@
+tweets-main:
+  development:
+  test:
+  production: 
+    host: http://url.com
+    port: 5984
+    
+tweets-derived:
+  development:
+  test:
+  production: 
+    host: http://url.com
+    port: 5984
