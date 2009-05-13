@@ -12,4 +12,8 @@ Rails::Initializer.run do |config|
     :secret => CONFIG['session_secret']
   }
 
+  config.gem 'faker'  
+  config.gem 'populator'
+  config.gem 'notahat-machinist', :lib => 'machinist', :source => 'http://gems.github.com'
+  
 end
