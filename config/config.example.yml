@@ -1,0 +1,7 @@
+development:
+  session_key: _tweets_session
+  session_secret: Oe5rWWcYJglXXtwy1XAY8ZMuZ75EZa1EjkYIbDiaavNyKSXKccVDsH61MlT35s5l
+
+test:
+  session_key: _tweets_session
+  session_secret: gDBKZy3NjnJrN5CM346HavszUCMbOWPWgDBKZy3NjnJrN5CM346HavszUCMbOWPW
