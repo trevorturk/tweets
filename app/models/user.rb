@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   validates_presence_of :login
   validates_length_of :login, :within => 1..15
   
+  def to_param
+    login
+  end
+  
   def to_s
     login
   end

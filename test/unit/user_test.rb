@@ -28,6 +28,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal u.tweets, [t]
   end
   
+  test "to_param" do
+    u = User.make
+    assert_equal u.login, u.to_param
+  end
+  
   test "to_s" do
     u = User.make
     assert_equal u.login, u.to_s

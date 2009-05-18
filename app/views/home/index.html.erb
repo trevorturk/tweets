@@ -2,7 +2,7 @@
 
 <ul>
   <% @tweets.each do |tweet| %>
-    <li><%= tweet.user %>: <%= tweet %></li>
+    <li><b><%= link_to tweet.user, tweet.user %></b> <%= tweet %></li>
   <% end %>
 </ul>
 
@@ -10,6 +10,6 @@
 
 <ul>
   <% @users.each do |user| %>
-    <li><%= user %></li>
+    <li><b><%= link_to user, user %></b></li>
   <% end %>
 </ul>
