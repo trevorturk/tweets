@@ -10,11 +10,11 @@ namespace :db do
     User.create(:login => 'trevor')
     User.create(:login => 'zach')
 
-    # puts 'Creating Tweets...'
-    # Tweet.create(:user => 'geoff', :body => "i'm hungry... again...")
-    # Tweet.create(:user => 'scott', :body => "it's too cold in the office :(")
-    # Tweet.create(:user => 'trevor', :body => "let's drink some whiskey?")
-    # Tweet.create(:user => 'zach', :body => "couchdb rulez!")
+    puts 'Creating Tweets...'
+    Tweet.create(:body => "i'm hungry... again...") {|r| r.user = User.find_by_login('geoff')}
+    Tweet.create(:body => "it's too cold in the office :(") {|r| r.user = User.find_by_login('scott')}
+    Tweet.create(:body => "let's drink some whiskey?") {|r| r.user = User.find_by_login('trevor')}
+    Tweet.create(:body => "couchdb rulez!") {|r| r.user = User.find_by_login('zach')}
 
   end
 end

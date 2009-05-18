@@ -1,6 +1,10 @@
 <h2>Tweets</h2>
 
-# TODO...
+<ul>
+  <% @tweets.each do |tweet| %>
+    <li><%= tweet.user %>: <%= tweet %></li>
+  <% end %>
+</ul>
 
 <h2>Users</h2>
 
