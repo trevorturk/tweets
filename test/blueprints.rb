@@ -13,7 +13,7 @@ User.blueprint do
   login { Sham.login }
 end
 
-Following.blueprint do
+Followship.blueprint do
   user
   following_id { User.make.id }
 end

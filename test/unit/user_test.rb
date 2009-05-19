@@ -30,13 +30,13 @@ class UserTest < ActiveSupport::TestCase
   
   test "has many followings" do
     u = User.make
-    r = Following.make(:user_id => u.id)
+    r = Followship.make(:user_id => u.id)
     assert_equal u.followings, [r]
   end
   
   test "has many followers" do
     u = User.make
-    r = Following.make(:following_id => u.id)
+    r = Followship.make(:following_id => u.id)
     assert_equal u.followers, [r]
   end
   
