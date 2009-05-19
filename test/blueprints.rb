@@ -12,3 +12,8 @@ end
 User.blueprint do
   login { Sham.login }
 end
+
+Following.blueprint do
+  user
+  following_id { User.make.id }
+end
