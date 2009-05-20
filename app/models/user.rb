@@ -4,11 +4,11 @@ class User < ActiveRecord::Base
   
   has_many :tweets
   
-  has_many :follower_records, :foreign_key => :follower_id, :class_name => 'Follow'
-  has_many :followings, :through => :follower_records
+  has_many :records_where_they_are_doing_the_following, :foreign_key => :follower_id, :class_name => 'Follow'
+  has_many :followings, :through => :records_where_they_are_doing_the_following
   
-  has_many :followed_records, :foreign_key => :following_id, :class_name => 'Follow'
-  has_many :followers, :through => :followed_records
+  has_many :records_where_they_are_being_followed, :foreign_key => :following_id, :class_name => 'Follow'
+  has_many :followers, :through => :records_where_they_are_being_followed
   
   validates_presence_of :login
   validates_length_of :login, :within => 1..15
