@@ -1,0 +1,5 @@
+<div id="nav">
+  <% if logged_in? %>
+    Logged in as <b><%= link_to current_user, current_user %></b>
+  <% end %>
+</div>

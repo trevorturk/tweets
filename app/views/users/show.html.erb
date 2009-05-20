@@ -5,3 +5,23 @@
     <li><%= tweet %></li>
   <% end %>
 </ul>
+
+<h2>Feed</h2>
+
+<p>TODO...</p>
+
+<h2>Following</h2>
+
+<ul>
+  <% @user.followings.each do |user| %>
+    <li><b><%= link_to user, user %></b></li>
+  <% end %>
+</ul>
+
+<h2>Followers</h2>
+
+<ul>
+  <% @user.followers.each do |user| %>
+    <li><b><%= link_to user, user %></b></li>
+  <% end %>
+</ul>

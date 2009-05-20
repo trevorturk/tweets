@@ -8,6 +8,7 @@
 	<%= stylesheet_link_tag 'reset', 'application' %>
 </head>
 <body>
+  <%= render 'shared/nav' %>
   <h1><%= link_to 'Tweets', root_path %></h1>
   <%= yield %>
 </body>

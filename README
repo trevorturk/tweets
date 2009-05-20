@@ -14,6 +14,14 @@ fail/whale
 
 # TODO...
 
+== TODO
+
+user login validations a la twitter
+h escaping of users/tweets on front end
+proper logging in
+front end for following, unfollowing, showing followings/followers
+per user feed of tweets dependent on users being followed
+
 == MIT LICENSE
 
 Copyright (c) 2009 Timelines, Inc.
