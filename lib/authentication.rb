@@ -25,7 +25,7 @@ module Authentication
   
   # TODO make an actual login system
   def login_as_trevor
-    self.current_user = User.find_by_login!('trevor')
+    self.current_user = User.find_by_login('trevor')
   end
   
   # Inclusion hook to make #current_user and #logged_in?
