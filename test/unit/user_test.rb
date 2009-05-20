@@ -46,7 +46,18 @@ class UserTest < ActiveSupport::TestCase
     end
   end
   
-  test "follows are unique" do
+  test "unfollow" do
+    user1 = User.make
+    user2 = User.make
+    user1.follow(user2)
+    assert_difference 'Follow.count', -1 do
+      user1.unfollow(user2)
+      assert_equal [], user1.followings
+      assert_equal [], user2.followers
+    end
+  end
+  
+  test "follows are unique and attempts to create two followings doesn't bomb" do
     user1 = User.make
     user2 = User.make
     assert_difference 'Follow.count' do
@@ -68,10 +79,18 @@ class UserTest < ActiveSupport::TestCase
     end
   end
   
-  test "cannot follow self" do
+  test "cannot follow self but doesn't bomb" do
     user = User.make
-    assert_no_difference 'Follow.count' do
-      user.follow(user)
+    assert_nothing_raised do
+      assert_no_difference 'Follow.count' do
+        user.follow(user)
+      end
+    end
+  end
+  
+  test "unfollow doesn't bomb if nothing found" do
+    assert_nothing_raised do
+      User.make.unfollow(User.make)
     end
   end
   

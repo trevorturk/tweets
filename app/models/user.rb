@@ -13,8 +13,12 @@ class User < ActiveRecord::Base
   validates_presence_of :login
   validates_length_of :login, :within => 1..15
   
-  def follow(followable)
-    Follow.create {|r| r.follower = self; r.following = followable}
+  def follow(user)
+    Follow.create {|r| r.follower = self; r.following = user}
+  end
+  
+  def unfollow(user)
+    Follow.find_by_follower_id_and_following_id(self.id, user.id).destroy rescue nil
   end
   
   def to_param
