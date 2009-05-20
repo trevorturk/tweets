@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   validates_presence_of :login
   validates_length_of :login, :within => 1..15
   
+  def follow(followable)
+    Follow.create {|r| r.follower = self; r.following = followable}
+  end
+  
   def to_param
     login
   end

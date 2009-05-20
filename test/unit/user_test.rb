@@ -36,6 +36,45 @@ class UserTest < ActiveSupport::TestCase
     assert_equal [user_being_followed], user_doing_the_following.followings
   end
   
+  test "follow" do
+    user_doing_the_following = User.make
+    user_being_followed = User.make
+    assert_difference 'Follow.count' do
+      user_doing_the_following.follow(user_being_followed)
+      assert_equal [user_doing_the_following], user_being_followed.followers
+      assert_equal [user_being_followed], user_doing_the_following.followings
+    end
+  end
+  
+  test "follows are unique" do
+    user1 = User.make
+    user2 = User.make
+    assert_difference 'Follow.count' do
+      user1.follow(user2)
+    end
+    assert_no_difference 'Follow.count' do
+      user1.follow(user2)
+    end
+  end
+  
+  test "can follow each other" do
+    user1 = User.make
+    user2 = User.make
+    assert_difference 'Follow.count' do
+      user1.follow(user2)
+    end
+    assert_difference 'Follow.count' do
+      user2.follow(user1)
+    end
+  end
+  
+  test "cannot follow self" do
+    user = User.make
+    assert_no_difference 'Follow.count' do
+      user.follow(user)
+    end
+  end
+  
   test "to_param" do
     u = User.make
     assert_equal u.login, u.to_param
