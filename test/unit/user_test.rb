@@ -27,17 +27,13 @@ class UserTest < ActiveSupport::TestCase
     r = Tweet.make(:user_id => u.id)
     assert_equal u.tweets, [r]
   end
-  
-  test "has many followings" do
-    u = User.make
-    r = Followship.make(:user_id => u.id)
-    assert_equal u.followings, [r]
-  end
-  
-  test "has many followers" do
-    u = User.make
-    r = Followship.make(:following_id => u.id)
-    assert_equal u.followers, [r]
+    
+  test "has many followings/followers" do
+    user_doing_the_following = User.make
+    user_being_followed = User.make
+    Follow.make(:follower_id => user_doing_the_following.id, :following_id => user_being_followed.id)
+    assert_equal [user_doing_the_following], user_being_followed.followers
+    assert_equal [user_being_followed], user_doing_the_following.followings
   end
   
   test "to_param" do

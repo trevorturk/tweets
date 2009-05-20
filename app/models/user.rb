@@ -3,12 +3,12 @@ class User < ActiveRecord::Base
   attr_accessible :login
   
   has_many :tweets
-
-  has_many :followers, :through => :follower_followings
-  has_many :followees, :through => :followee_followings
   
-  has_many :follower_followings, :foreign_key => :follower_id, :class_name => 'User'
-  has_many :followee_followings, :foreign_key => :followee_id, :class_name => 'User'
+  has_many :follower_records, :foreign_key => :follower_id, :class_name => 'Follow'
+  has_many :followings, :through => :follower_records
+  
+  has_many :followed_records, :foreign_key => :following_id, :class_name => 'Follow'
+  has_many :followers, :through => :followed_records
   
   validates_presence_of :login
   validates_length_of :login, :within => 1..15
