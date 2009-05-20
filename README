@@ -19,7 +19,7 @@ fail/whale
 user login validations a la twitter
 h escaping of users/tweets on front end
 proper logging in
-front end for following, unfollowing, showing followings/followers
+front end for following, unfollowing
 per user feed of tweets dependent on users being followed
 
 == MIT LICENSE
