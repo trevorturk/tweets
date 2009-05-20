@@ -21,6 +21,9 @@ h escaping of users/tweets on front end
 proper logging in
 front end for following, unfollowing
 per user feed of tweets dependent on users being followed
+  when following is created, populate feed for follower with items from followed user
+  when following is destroyed, remove feed items for unfollower that were created by formerly followed user
+  when tweet is twoten, create feed item entry for each follower of that tweeter
 
 == MIT LICENSE
 

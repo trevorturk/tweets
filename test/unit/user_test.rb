@@ -94,6 +94,10 @@ class UserTest < ActiveSupport::TestCase
     end
   end
   
+  test "has many feed items" do
+    flunk
+  end
+  
   test "to_param" do
     u = User.make
     assert_equal u.login, u.to_param

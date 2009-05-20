@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   
   attr_accessible :login
   
+  has_many :feed_items
   has_many :tweets
   
   has_many :records_where_they_are_doing_the_following, :foreign_key => :follower_id, :class_name => 'Follow'

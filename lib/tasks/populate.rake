@@ -18,6 +18,8 @@ namespace :db do
     
     puts 'Creating Follows'
     geoff.follow(scott)
+    trevor.follow(geoff)
+    trevor.follow(scott)
     trevor.follow(zach)
     
   end

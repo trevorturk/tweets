@@ -9,20 +9,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090519170532) do
+ActiveRecord::Schema.define(:version => 20090520215305) do
+
+  create_table "feed_items", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "tweet_id"
+    t.integer  "tweet_user_id"
+    t.datetime "tweet_created_at"
+    t.datetime "created_at"
+  end
 
   create_table "follows", :force => true do |t|
     t.integer  "follower_id"
     t.integer  "following_id"
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "tweets", :force => true do |t|
     t.integer  "user_id"
     t.string   "body"
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
