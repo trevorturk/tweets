@@ -95,7 +95,9 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test "has many feed_items" do
-    flunk
+    u = User.make
+    f = FeedItem.make(:user_id => u.id)
+    assert_equal 1, u.feed_items.count
   end
   
   test "to_param" do

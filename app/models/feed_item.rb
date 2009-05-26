@@ -3,9 +3,8 @@ class FeedItem < ActiveRecord::Base
   attr_accessible
   
   belongs_to :user
-  
-  has_one :tweet
-  has_one :tweet_user 
+  belongs_to :tweet
+  belongs_to :tweet_user, :class_name => 'User'
   
   validates_presence_of :user_id, :tweet_id, :tweet_user_id, :tweet_created_at
   

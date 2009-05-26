@@ -18,20 +18,25 @@ class FeedItemTest < ActiveSupport::TestCase
     end
   end
     
-  test "tweet_created_at is created_at of tweet" do
-    flunk
-  end
-  
   test "belongs to user" do
-    flunk
+    u = User.make
+    f = FeedItem.make(:user_id => u.id)
+    assert f.user == u
   end
   
   test "has one tweet" do
-    flunk
+    f = FeedItem.make
+    assert_equal f.tweet.id, f.tweet_id
   end
   
   test "has one tweet_user" do
-    flunk
+    f = FeedItem.make
+    assert_equal f.tweet.user.id, f.tweet_user_id
+  end
+  
+  test "tweet_created_at is created_at of tweet" do
+    f = FeedItem.make
+    assert_equal f.tweet.created_at, f.tweet_created_at
   end
   
 end
