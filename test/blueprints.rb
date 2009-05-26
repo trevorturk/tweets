@@ -18,11 +18,10 @@ User.blueprint do
   login { Sham.login }
 end
 
-Sham.tweet { Tweet.make }
-
 FeedItem.blueprint do
+  tweet = Tweet.make
   user
-  tweet_id { Sham.tweet.id }
-  tweet_user_id { Sham.tweet.user_id }
-  tweet_created_at { Sham.tweet.created_at }
+  tweet_id { tweet.id }
+  tweet_user_id { tweet.user_id }
+  tweet_created_at { tweet.created_at }
 end
