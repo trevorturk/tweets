@@ -2,11 +2,11 @@ require 'test_helper'
 
 class FeedItemTest < ActiveSupport::TestCase
   
-  test "FeedItem.make" do
-    assert_difference 'FeedItem.count' do
-      FeedItem.make
-    end
-  end
+  # test "FeedItem.make" do
+  #   assert_difference 'FeedItem.count' do
+  #     FeedItem.make
+  #   end
+  # end
   
   test "belongs to user" do
     flunk
