@@ -8,7 +8,11 @@
 
 <h2>Feed</h2>
 
-<p>TODO...</p>
+<ul>
+  <% @feed_items.each do |feed_item| %>
+    <li><b><%= link_to feed_item.tweet_user, feed_item.tweet_user %></b> <%= feed_item.tweet %></li>
+  <% end %>
+</ul>
 
 <h2>Following</h2>
 
