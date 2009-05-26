@@ -2,11 +2,25 @@ require 'test_helper'
 
 class FeedItemTest < ActiveSupport::TestCase
   
-  # test "FeedItem.make" do
-  #   assert_difference 'FeedItem.count' do
-  #     FeedItem.make
-  #   end
-  # end
+  test "FeedItem.make" do
+    assert_difference 'FeedItem.count' do
+      FeedItem.make
+    end
+  end
+    
+  test "requires user_id, tweet_id, tweet_user_id, tweet_created_at" do
+    assert_no_difference 'FeedItem.count' do
+      r = FeedItem.create
+      assert r.errors.on(:user_id)
+      assert r.errors.on(:tweet_id)
+      assert r.errors.on(:tweet_user_id)
+      assert r.errors.on(:tweet_created_at)
+    end
+  end
+    
+  test "tweet_created_at is created_at of tweet" do
+    flunk
+  end
   
   test "belongs to user" do
     flunk
@@ -17,22 +31,6 @@ class FeedItemTest < ActiveSupport::TestCase
   end
   
   test "has one tweet_user" do
-    flunk
-  end
-  
-  test "requires user" do
-    flunk
-  end
-  
-  test "requires tweet" do
-    flunk
-  end
-  
-  test "requires tweet_user" do
-    flunk
-  end
-  
-  test "item_created_at == tweet created_at" do
     flunk
   end
   

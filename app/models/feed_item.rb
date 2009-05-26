@@ -5,6 +5,8 @@ class FeedItem < ActiveRecord::Base
   belongs_to :user
   
   has_one :tweet
-  has_one :tweet_user
+  has_one :tweet_user 
+  
+  validates_presence_of :user_id, :tweet_id, :tweet_user_id, :tweet_created_at
   
 end

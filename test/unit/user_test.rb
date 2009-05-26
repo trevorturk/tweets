@@ -94,7 +94,7 @@ class UserTest < ActiveSupport::TestCase
     end
   end
   
-  test "has many feed items" do
+  test "has many feed_items" do
     flunk
   end
   

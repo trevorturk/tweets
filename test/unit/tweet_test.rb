@@ -8,24 +8,18 @@ class TweetTest < ActiveSupport::TestCase
     end
   end
     
-  test "requires body" do
+  test "requires body, user_id" do
     assert_no_difference 'Tweet.count' do
-      t = Tweet.create(:body => nil)
-      assert t.errors.on(:body)
-    end
-  end
-
-  test "requires user" do
-    assert_no_difference 'Tweet.count' do
-      t = Tweet.create(:user_id => nil)
-      assert t.errors.on(:user_id)
+      r = Tweet.create
+      assert r.errors.on(:body)
+      assert r.errors.on(:user_id)
     end
   end
   
   test "body =< 140 characters" do
     assert_no_difference 'Tweet.count' do
-      t = Tweet.create(:body => 'a' * 141)
-      assert t.errors.on(:body)
+      r = Tweet.create(:body => 'a' * 141)
+      assert r.errors.on(:body)
     end
   end
   

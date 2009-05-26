@@ -8,18 +8,12 @@ class FollowTest < ActiveSupport::TestCase
     end
   end
 
-  test "requires follower_id" do
+  test "requires follower_id, following_id" do
     assert_no_difference 'Follow.count' do
-      f = Follow.create
-      assert f.errors.on(:follower_id)
+      r = Follow.create
+      assert r.errors.on(:following_id)
+      assert r.errors.on(:follower_id)
     end
   end
-  
-  test "requires following_id" do
-    assert_no_difference 'Follow.count' do
-      f = Follow.create
-      assert f.errors.on(:following_id)
-    end
-  end
-    
+      
 end
