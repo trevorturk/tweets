@@ -1,3 +1,4 @@
+require 'machinist/active_record'
 require 'populator'
 require 'faker'
 
